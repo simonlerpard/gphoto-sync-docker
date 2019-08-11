@@ -1,0 +1,16 @@
+{
+  "name": "gphoto-sync-runner",
+  "version": "0.0.1",
+  "description": "Run gphoto-sync from nodejs and authenticate using the web browser.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Lerpard",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "validator": "^11.1.0"
+  }
+}
