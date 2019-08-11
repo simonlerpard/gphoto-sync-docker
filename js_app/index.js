@@ -40,7 +40,7 @@ optionalArguments.forEach((arg) => {
 	const value = process.env[env];
 	if (value === 'true') {
 		arguments.push('--' + arg);
-	} else if (value !== undefined) {
+	} else if (value !== undefined && value.length > 0) {
 		arguments.push('--' + arg);
 		arguments.push(value);
 	}
