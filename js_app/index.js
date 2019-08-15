@@ -143,7 +143,7 @@ app.get('/', function(req, res){
 			<p>Click on the link above and login, when logged in you will be presented with a code. Copy it and paste it in the input field below.</p>
 			<br>
 			<br>
-			<form action="/auth" method="POST">
+			<form action="/auth" method="GET">
 				Google Auth Key <input type="text" name="code" required>
 				<button type="submit">Send auth token to gphoto-sync application</button>
 			</form>
