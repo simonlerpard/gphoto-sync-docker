@@ -44,7 +44,7 @@ optionalArguments.forEach((arg) => {
 		arguments.push('--' + arg);
 		arguments.push(value);
 	}
-	console.log('start date:' + '--' + arg + " " + value);
+	console.log('Optional arguments:' + '--' + arg + " " + value);
 });
 
 
@@ -82,7 +82,7 @@ try {
 		}
 		client_secret_template.installed.client_id = process.env.CLIENT_ID;
 		client_secret_template.installed.client_secret = process.env.CLIENT_SECRET;
-		client_secret_template.installed.redirect_uris = [process.env.WEBGUI + "/auth"];
+		// client_secret_template.installed.redirect_uris = [process.env.WEBGUI + "/auth"];
 
 		const jsonContent = JSON.stringify(client_secret_template);
 		console.log(jsonContent);
@@ -138,7 +138,16 @@ app.get('/', function(req, res){
 	// const redirect_uri = 'redirect_uri=' + req.protocol + '://' + req.get('host') + '/send';
 	// url = url.replace('redirect_uri=urn:ietf:wg:oauth:2.0:oob', redirect_uri).replace('redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob', redirect_uri);
 	if (validator.isURL(url)) {
-		res.send('<a href="'+url+'">Login with Google account.</a>');
+		res.send(`
+			<a href="${url}" target="_blank">Login with Google account.</a>
+			<p>Click on the link above and login, when logged in you will be presented with a code. Copy it and paste it in the input field below.</p>
+			<br>
+			<br>
+			<form action="/auth" method="POST">
+				Google Auth Key <input type="text" name="code" required>
+				<button type="submit">Send auth token to gphoto-sync application</button>
+			</form>
+			`);
 	} else {
 	res.send('No authentication url available. Got this from the current log: <br>' + msg.replace('\n','<br>') + "\n\n\nURL:" + url);
 	}
