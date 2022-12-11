@@ -10,7 +10,7 @@
   "author": "Simon Lerpard",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "validator": "^11.1.0"
   }
 }
